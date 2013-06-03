@@ -3,7 +3,7 @@
 
 
 echo "Hello, you node is"
-$BUILD_DIR/bin/node --version
+$1/bin/node --version
 
 # fail fast
 set -e
