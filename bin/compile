@@ -2,13 +2,10 @@
 # bin/compile <build-dir> <cache-dir>
 
 # fail fast
-set -e
-
-which node
-gem env
+# set -e
 
 # debug
-# set -x
+set -x
 
 # clean up leaking environment
 unset GIT_DIR
@@ -29,10 +26,14 @@ echo "-----> Building runtime environment"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
 
+
+which node
+gem env
+
 echo "-----> Lets list stuff"
 
 ls -la $BUILD_DIR/node_modules/
-ls -la ./vendor
+ls -la ./vendor/bundle
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
   # make sure that grunt and grunt-cli are installed locally
