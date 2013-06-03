@@ -4,6 +4,9 @@
 # fail fast
 set -e
 
+which node
+gem env
+
 # debug
 # set -x
 
@@ -14,6 +17,17 @@ unset GIT_DIR
 BUILD_DIR=$1
 CACHE_DIR=$2
 LP_DIR=`cd $(dirname $0); cd ..; pwd`
+
+# setting up paths for building
+PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
+INCLUDE_PATH="$VENDORED_NODE/include"
+export CPATH="$INCLUDE_PATH"
+export CPPPATH="$INCLUDE_PATH"
+
+
+echo "-----> Building runtime environment"
+mkdir -p $BUILD_DIR/.profile.d
+echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
 
 echo "-----> Lets list stuff"
 
