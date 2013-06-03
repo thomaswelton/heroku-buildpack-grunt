@@ -7,8 +7,7 @@
 # debug
 set -x
 
-ls -la $1/vendor/bundle/ruby/1.9.1
-bundle --version
+$BUILD_DIR/vendor/bundle/ruby/1.9.1/bin/compass compile
 
 # clean up leaking environment
 unset GIT_DIR
