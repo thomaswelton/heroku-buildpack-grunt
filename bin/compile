@@ -17,8 +17,8 @@ LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 echo "-----> Lets list stuff"
 
-ls $BUILD_DIR/node_modules/
-ls $BUILD_DIR
+ls -la $BUILD_DIR/node_modules/
+ls -la ./vendor
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
   # make sure that grunt and grunt-cli are installed locally
