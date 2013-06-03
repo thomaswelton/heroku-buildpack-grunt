@@ -7,7 +7,7 @@
 # debug
 set -x
 
-$BUILD_DIR/vendor/bundle/ruby/1.9.1/bin/compass compile
+$BUILD_DIR/vendor/bundle/ruby/2.0.0/bin/compass compile
 
 # clean up leaking environment
 unset GIT_DIR
@@ -170,7 +170,7 @@ export CPPPATH="$INCLUDE_PATH"
 
 # install compass
 echo "-----> Installing Compass"
-export GEM_HOME=$BUILD_DIR/vendor/bundle/ruby/1.9.1
+export GEM_HOME=$BUILD_DIR/vendor/bundle/ruby/2.0.0
 PATH="$GEM_HOME/bin:$PATH"
 HOME=$BUILD_DIR gem install compass --user-install --no-rdoc --no-ri
 
@@ -183,7 +183,7 @@ echo "Dependencies installed" | indent
 echo "-----> Building runtime environment"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
-echo "export PATH=\"\$HOME/.gem/ruby/1.9.1/bin:\$PATH\"" > $BUILD_DIR/.profile.d/ruby.sh
+echo "export PATH=\"\$HOME/.gem/ruby/2.0.0/bin:\$PATH\"" > $BUILD_DIR/.profile.d/ruby.sh
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
   run_npm "install grunt-cli"
