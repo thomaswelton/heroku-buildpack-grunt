@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-which node
+
+echo "Hello, you node is"
+$BUILD_DIR/bin/node --version
 
 # fail fast
 set -e
