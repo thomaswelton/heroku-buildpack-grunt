@@ -23,7 +23,6 @@ export GEM_HOME=$BUILD_DIR/vendor/bundle/ruby/2.0.0
 PATH="$GEM_HOME/bin:$PATH"
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
-  run_npm "install grunt-cli"
   echo "-----> Found Gruntfile, running grunt heroku task"
   $BUILD_DIR/node_modules/grunt-cli/bin/grunt heroku
 else
