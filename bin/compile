@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+# fail fast
+set -e
+
+# debug
+# set -x
+
+# clean up leaking environment
+unset GIT_DIR
+
+# parse and derive params
+BUILD_DIR=$1
+CACHE_DIR=$2
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+
+echo "-----> Lets list stuff"
+
+ls $BUILD_DIR/node_modules/
+ls $BUILD_DIR
+
+if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
+  # make sure that grunt and grunt-cli are installed locally
+  echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
+  $BUILD_DIR/node_modules/.bin/grunt heroku:$NODE_ENV
+else
+  echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
+fi
