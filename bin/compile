@@ -174,7 +174,6 @@ PATH="$GEM_HOME/bin:$PATH"
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
 run_npm "install --production"
-run_npm "rebuild"
 echo "Dependencies installed" | indent
 
 echo "-----> Building runtime environment"
