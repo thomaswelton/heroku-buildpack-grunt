@@ -97,6 +97,14 @@ status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $build_dir/.profile.d/nodejs.sh
 
+# Set GEM_HOME to be bundler directory
+echo "-----> Installing Compass"
+export GEM_HOME=$build_dir/vendor/bundle/ruby/2.0.0
+PATH="$GEM_HOME/bin:$PATH"
+
+echo "-----> Running grunt heroku"
+$build_dir/vendor/node/bin/node $build_dir/node_modules/grunt-cli/bin/grunt heroku
+
 # Post to nomnom
 curl \
   --data @$build_dir/package.json \
