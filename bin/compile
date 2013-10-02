@@ -103,7 +103,7 @@ export GEM_HOME=$build_dir/vendor/bundle/ruby/2.0.0
 PATH="$GEM_HOME/bin:$PATH"
 
 echo "-----> Running grunt heroku"
-$build_dir/node_modules/grunt-cli/bin/grunt heroku
+$build_dir/vendor/node/bin/node $build_dir/node_modules/grunt-cli/bin/grunt heroku
 
 # Post to nomnom
 curl \
